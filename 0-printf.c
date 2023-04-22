@@ -2,6 +2,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
 
 /**
@@ -24,7 +25,7 @@ int pr_string(va_list args)
 {
 	char *str = va_arg(args, char *);
 
-	return (write(1, &str, strlen(str)));
+	return (write(1, &str, strlen(str) + 1));
 }
 
 /**
@@ -96,6 +97,7 @@ int main(void)
 {
 	// char c = 'H';
 	char *s = "Hello world";
-	_printf("%s\n", s);
-	return (0);
+	int x;
+	x = _printf("%s\n", s);
+	return (x);
 }

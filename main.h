@@ -2,6 +2,8 @@
 #define _MAIN_H_
 int pr_chr(va_list args);
 int pr_string(va_list args);
+int pr_percent(void);
+int print(char s);
 /**
 * struct op - Struct op
 *
