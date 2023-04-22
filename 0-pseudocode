@@ -1,0 +1,10 @@
+1.Create the pr_chr function using write.
+2.Create the pr_string function using write.
+3.Create the pr_percent function using write.
+4.In the main.h file create a typedef struct char_conv that takes 2 args one char for the conversion specified and another for a function pointer.
+5.Create a function to parse the args for % char.
+6.Inside the parsing function create a char_conv array which corresponding with each conversion to the responding function.
+7.va_list args to create args function.
+8.start the args function.
+9.loop through the args for the char after % then point to the correct function.
+10.end the args function.
