@@ -10,7 +10,7 @@ int pr_string(va_list args);
 */
 typedef struct ch
 {
-char *ch;
+char ch;
 int (*ptr)(va_list args);
 } ch_t;
 int _printf(const char *format, ...);
