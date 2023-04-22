@@ -21,7 +21,7 @@ int pr_chr(va_list args)
 */
 int pr_string(va_list args)
 {
-	char *str = va_arg(args, char*);
+	char *str = va_arg(args, char *);
 
 	return (write(1, &str, strlen(str)));
 }
@@ -35,24 +35,36 @@ int pr_string(va_list args)
 int _printf(const char *format, ...)
 {
 ch_t chars[] = {
-{"c", pr_chr},
-{"s", pr_string},
-{"%", pr_chr},
-{NULL, NULL}
+{'c', pr_chr},
+{'s', pr_string},
+{'%', pr_chr},
+{'\0', NULL}
 		};
 		va_list args;
-		int i = 0;
+		int i = 0, j = 0;
 	int num = 0;
 
 		va_start(args, format);
-		while (chars[i].ch != NULL)
+		while (format[i] != '\0')
 		{
-			if (strcmp(chars[i].ch, va_arg(args, char *)) == 0)
-			{
-				num = chars[i].ptr(args);
+			for (j = 0; j < 4; j ++)
+			{		
+				if (chars[j].ch == format[i + 1])
+					num = chars[j].ptr(args);
+
+				continue;
 			}
 			i++;
 		}
+		
 		va_end(args);
 		return (num);
+}
+
+int main(void)
+{
+	char c = 'H';
+	char *s = "Hello world";
+	_printf("%c%s", c, s);
+	return (0);
 }
