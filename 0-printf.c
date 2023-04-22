@@ -95,7 +95,7 @@ ch_t chars[] = {
 int main(void)
 {
 	// char c = 'H';
-	// char *s = "Hello world";
-	_printf("%c%%%c%c%c%c%c\n", 'H', 'e', 'l', 'l', 'o', '\0');
+	char *s = "Hello world";
+	_printf("%s\n", s);
 	return (0);
 }
