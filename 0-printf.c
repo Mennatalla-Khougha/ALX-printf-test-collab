@@ -47,12 +47,22 @@ ch_t chars[] = {
 		va_start(args, format);
 		while (format[i] != '\0')
 		{
-			for (j = 0; j < 4; j ++)
-			{		
-				if (chars[j].ch == format[i + 1])
-					num = chars[j].ptr(args);
-
+			if (format[i] != '%')
+			{
+				num += chars[1].ptr(args);
 				continue;
+			}
+			else
+			{
+				for (j = 0; j < 4; j ++)
+				{		
+					if (chars[j].ch == format[i + 1])
+					{
+						num += chars[j].ptr(args);
+						i++;
+						break;
+					}
+				}
 			}
 			i++;
 		}
@@ -63,8 +73,8 @@ ch_t chars[] = {
 
 int main(void)
 {
-	char c = 'H';
-	char *s = "Hello world";
-	_printf("%c%s", c, s);
+	// char c = 'H';
+	// char *s = "Hello world";
+	_printf("%c%c%c%c%c", 'H', 'e', 'l', 'l', 'o');
 	return (0);
 }
