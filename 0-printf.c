@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <string.h>
+#include <stdio.h>
 #include "main.h"
 
 /**
@@ -43,14 +44,16 @@ ch_t chars[] = {
 		va_list args;
 		int i = 0, j = 0;
 	int num = 0;
+	char new_line = '\n';
 
 		va_start(args, format);
 		while (format[i] != '\0')
 		{
-			if (format[i] != '%')
+			if (format[i] == '\n')
 			{
-				num += chars[1].ptr(args);
-				continue;
+				write(1, &new_line, 1);
+					i++;
+					continue;
 			}
 			else
 			{
@@ -75,6 +78,6 @@ int main(void)
 {
 	// char c = 'H';
 	// char *s = "Hello world";
-	_printf("%c%c%c%c%c", 'H', 'e', 'l', 'l', 'o');
+	_printf("%c%c%c%c%c%c\n", 'H', 'e', 'l', 'l', 'o', '\0');
 	return (0);
 }
