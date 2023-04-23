@@ -1,9 +1,28 @@
-#include <unistd.h>
-#include <stdarg.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include "main.h"
+
+/**
+ * print_number - print a number
+ * @n: a number.
+ * @sum: 0.
+ * Return: number of chars printed;
+ */
+
+int print_number(int n, int sum)
+{
+	unsigned int x = n;
+
+	if (n < 0)
+	{
+		n *= -1;
+		x = n;
+		sum += print('-');
+	}
+	x /= 10;
+	if (x != 0)
+		sum += print_number(x, sum);
+	sum += print('0' + (unsigned int) n % 10);
+	return (sum);
+}
 
 /**
  * pr_decimal - print a decimal number
@@ -12,8 +31,10 @@
  */
 int pr_decimal(va_list args)
 {
+	int sum = 0;
 	int d = va_arg(args, int);
-	return (write(1, &d, 1));
+
+	return (print_number(d, sum));
 }
 /**
  * pr_integer - print an integer number
@@ -22,7 +43,8 @@ int pr_decimal(va_list args)
  */
 int pr_integer(va_list args)
 {
+	int sum = 0;
 	int i = va_arg(args, int);
-	return (write(1, &i, 1));
+
+	return (print_number(i, sum));
 }
-int _printf(const char *format, ...)
