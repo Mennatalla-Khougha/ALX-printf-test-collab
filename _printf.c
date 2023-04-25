@@ -19,12 +19,15 @@ int check_input(const char *format)
 * Return: number of chars printed.
 */
 int _printf(const char *format, ...)
+
 {
-	char *list = "scdi%";
+	char *list = "scdibuoxXSprR%";
 	int sum = 0, i = 0;
 	va_list args;
 
 	va_start(args, format);
+	if (check_input(format))
+		return (0);
 	while (format[i] != '\0')
 	{
 		if (format[i] != '%')
@@ -36,7 +39,7 @@ int _printf(const char *format, ...)
 		if (format[i + 1] == '\0')
 			return (-1);
 		else if (strchr(list, format[i + 1]) != 0)
-				sum += print_spec(format[i + 1], args);
+			sum += print_spec(format[i + 1], args);
 		else
 		{
 			sum += print(format[i]);
@@ -75,5 +78,23 @@ int print_spec(char format, va_list args)
 		sum += pr_decimal(args);
 	else if (format == 'i')
 		sum += pr_integer(args);
+	else if (format == 'b')
+		sum += pr_binary(args);
+	else if (format == 'u')
+		sum += pr_unsign(args);
+	else if (format == 'x')
+		sum += pr_hexa(args, 87);
+	else if (format == 'X')
+		sum += pr_hexa(args, 55);
+	else if (format == 'o')
+		sum += pr_octal(args);
+	else if (format == 'S')
+		sum += pr_str(args);
+	else if (format == 'p')
+		sum += pr_pointer(args);
+	else if (format == 'r')
+		sum += pr_rev(args);
+	else if (format == 'R')
+		sum += pr_rot(args);
 	return (sum);
 }
