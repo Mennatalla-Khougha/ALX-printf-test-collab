@@ -29,7 +29,7 @@ int print_h(unsigned int n, int sum, int chr)
 	x /= 16;
 	if (x != 0)
 		sum = print_h(x, sum, chr);
-	if (n % 16 < 9)
+	if (n % 16 <= 9)
 		sum += print('0' + n % 16);
 	else
 		sum += print(chr + n % 16);
