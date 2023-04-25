@@ -21,7 +21,7 @@ int check_input(const char *format)
 int _printf(const char *format, ...)
 
 {
-	char *list = "scdibuoxX%";
+	char *list = "scdibuoxXSprR%";
 	int sum = 0, i = 0;
 	va_list args;
 
@@ -81,12 +81,20 @@ int print_spec(char format, va_list args)
 	else if (format == 'b')
 		sum += pr_binary(args);
 	else if (format == 'u')
-		sum += pr_unsigned(args);
-	else if (format == 'o')
-		sum += pr_octal(args);
+		sum += pr_unsign(args);
 	else if (format == 'x')
 		sum += pr_hexa(args, 87);
 	else if (format == 'X')
 		sum += pr_hexa(args, 55);
+	else if (format == 'o')
+		sum += pr_octal(args);
+	else if (format == 'S')
+		sum += pr_str(args);
+	else if (format == 'p')
+		sum += pr_pointer(args);
+	else if (format == 'r')
+		sum += pr_rev(args);
+	else if (format == 'R')
+		sum += pr_rot(args);
 	return (sum);
 }

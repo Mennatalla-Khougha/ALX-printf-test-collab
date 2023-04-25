@@ -13,6 +13,7 @@ int pr_binary(va_list args)
 
 	return (print_b(b, sum, 2));
 }
+
 /**
  * print_b - convert int to binary or octal
  * @n: number to be converted
@@ -33,7 +34,7 @@ int print_b(unsigned int n, int sum, int base)
 }
 
 /**
- * print_octal - convert int into octal
+ * pr_octal - convert int into octal
  * @args: numbers to be converted
  * Return: number of digist printed.
  */
@@ -41,6 +42,6 @@ int pr_octal(va_list args)
 {
 	int sum = 0;
 	unsigned int o = va_arg(args, unsigned int);
-	
-	return(print_b(o, sum, 8));
+
+	return (print_b(o, sum, 8));
 }

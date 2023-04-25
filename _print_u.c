@@ -1,26 +1,24 @@
 #include "main.h"
 
 /**
- * pr_unsigned - print unsigned number.
- * @args: number to be printed.
- * Return: number of digits printed.
+ * pr_unsign - print unsigned number
+ * @args: number to be printed
+ * Return: number of digits printed
  */
-
-int pr_unsigned(va_list args)
+int pr_unsign(va_list args)
 {
 	int sum = 0;
-
 	unsigned int u = va_arg(args, unsigned int);
-	return(print_num(u, sum));
+
+	return (print_num(u, sum));
 }
 
 /**
  * print_num - print unsigned number.
- * @u: number to be printed.
+ * @u: number to be printed
  * @sum: number of digits printed.
- * Return: number of digits printed.
+ * Return: number of digits printed
  */
-
 int print_num(unsigned int u, int sum)
 {
 	unsigned int x = u;

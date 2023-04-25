@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "main.h"
 int pr_chr(va_list args);
 int pr_string(char *str);
 int pr_percent(void);
@@ -14,23 +15,19 @@ int print_spec(char format, va_list args);
 int print_number(int x, int sum);
 int pr_decimal(va_list args);
 int pr_integer(va_list args);
+int pr_binary(va_list args);
+int print_b(unsigned int n, int sum, int base);
 int pr_unsign(va_list args);
-int print_num(unsigned int num, int sum);
+int print_num(unsigned int u, int sum);
 int pr_hexa(va_list args, int n);
 int print_h(unsigned int num, int sum, int chr);
+int pr_octal(va_list args);
 int pr_str(va_list args);
 int print_str(char *str);
-
-/**
-* struct op - Struct op
-*
-* @op: The operator
-* @f: The function associated
-*/
-typedef struct ch
-{
-char ch;
-int (*ptr)(va_list args);
-} ch_t;
+int pr_pointer(va_list args);
+int print_p(unsigned long p, int sum);
+int pr_rev(va_list args);
+int pr_rot(va_list args);
+int print_rot(char *str);
 int _printf(const char *format, ...);
 #endif
